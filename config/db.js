@@ -1,7 +1,14 @@
-const mongoose=require("mongoose");
+const mongoose = require("mongoose");
 
-//const dbUrl=mongoose.connect("mongodb://localhost:27017/toDoApp");   
-const dbUrl = mongoose.connect("mongodb+srv://serveshk7:OtjtAGuiBLmayihB@cluster0.yxk0r.mongodb.net/toDoApp?retryWrites=true&w=majority&appName=Cluster0");
-module.exports=dbUrl; 
+const connectToDatabase = async () => {
+  try {
+    // MongoDB Atlas connection URI without deprecated options
+    await mongoose.connect("mongodb+srv://serveshk7:OtjtAGuiBLmayihB@cluster0.yxk0r.mongodb.net/toDoApp?retryWrites=true&w=majority&appName=Cluster0");
+    console.log("Database connected successfully!");
+  } catch (error) {
+    console.error("Error connecting to MongoDB:", error);
+  }
+};
 
-
+// Call the async function to connect to the database
+connectToDatabase();
