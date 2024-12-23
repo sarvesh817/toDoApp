@@ -1,26 +1,22 @@
-const express=require("express");
-const app=express();
+const express = require("express");
+const app = express();
 require('dotenv').config();  
-const PORT=process.env.PORT || 7000;     
-const dbUrl=require("./config/db"); 
-const taskRoute=require("./routes/taskRoute");
+const dbUrl = require("./config/db"); 
+const taskRoute = require("./routes/taskRoute");
 
-//Postman reading data by below middleware
+// Postman reading data by below middleware
 app.use(express.json());       
-app.use("/",taskRoute); 
+app.use("/", taskRoute); 
 
-
-
-//First DB will connect then after that server listen port.     
-dbUrl.then(()=>{
-    console.log("Database Connected Successfully"); 
-    app.listen(PORT,()=>{
-        console.log(`Server listing on port ${PORT}`);       
-    });   
-}).catch((error)=>{
-    console.log(`Error connection to MongoDB ${error}`);
+// First DB will connect then after that serverless function will handle requests.
+dbUrl.then(() => {
+    console.log("Database Connected Successfully");
+    // Note: Don't use app.listen() here in serverless functions!
+}).catch((error) => {
+    console.log(`Error connecting to MongoDB: ${error}`);
 });
-      
 
-
-
+// Export the express app for Vercel to handle
+module.exports = (req, res) => {
+    app(req, res);  // call the express app with request and response
+};
