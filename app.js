@@ -6,13 +6,13 @@ const taskRoute = require("./routes/taskRoute");
 
 // Postman reading data by below middleware
 app.use(express.json());       
-
-app.get("/", (req, res) => {
+app.use("/", taskRoute); 
+/* app.get("/", (req, res) => {
     res.status(200).send("Welcome to the To-Do App!");
 });
  app.get("/test", (req, res) => {
     res.status(200).send("Server is live!");
-});
+}); */
    
 
 // Listen on port for local development
