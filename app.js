@@ -6,9 +6,16 @@ const taskRoute = require("./routes/taskRoute");
 
 // Postman reading data by below middleware
 app.use(express.json());       
-app.use("/", taskRoute); 
+app.get("/test", (req, res) => {
+    res.status(200).send("Server is live!");
+});
+  
 
-
+// Listen on port for local development
+const PORT = process.env.PORT || 5000;  // Use the port from environment or 5000 by default
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
 
 // Export the express app for Vercel to handle
 module.exports = (req, res) => {
