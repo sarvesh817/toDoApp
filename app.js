@@ -21,7 +21,8 @@ app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
 
-// Export the express app for Vercel to handle
+/* // Export the express app for Vercel to handle
 module.exports = (req, res) => {
     app(req, res);  // call the express app with request and response
 };
+ */
