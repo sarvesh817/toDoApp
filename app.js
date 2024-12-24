@@ -6,10 +6,14 @@ const taskRoute = require("./routes/taskRoute");
 
 // Postman reading data by below middleware
 app.use(express.json());       
-app.get("/test", (req, res) => {
+
+app.get("/", (req, res) => {
+    res.status(200).send("Welcome to the To-Do App!");
+});
+/* app.get("/test", (req, res) => {
     res.status(200).send("Server is live!");
 });
-  
+   */
 
 // Listen on port for local development
 const PORT = process.env.PORT || 5000;  // Use the port from environment or 5000 by default
