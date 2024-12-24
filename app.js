@@ -3,6 +3,8 @@ const app = express();
 require('dotenv').config();  
 const dbUrl = require("./config/db"); 
 const taskRoute = require("./routes/taskRoute");
+const cors = require("cors");
+app.use(cors());
 
 // Postman reading data by below middleware
 app.use(express.json());       
