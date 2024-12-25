@@ -20,8 +20,9 @@ const upload = multer({ storage: storage });
 //1 - Adding New Task
 taskRoute.post("/addTask",upload.single("taskFile"),async(req,res)=>{            
     try{   
+        console.log(req.file);              
         const {taskName}=req.body;  
-        const {taskFile}=req.file ? req.file.filename : null;     
+        const {taskFile}=req.file;    
         //Check to prevent same task
         const exitTask=await Task.findOne({taskName}); 
         if(exitTask){   
