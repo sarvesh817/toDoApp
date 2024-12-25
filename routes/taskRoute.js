@@ -1,11 +1,26 @@
 const express=require("express"); 
 const taskRoute=express.Router();  
 const Task=require("../models/taskModel");  
+const path = require('path');
+
+
+// Multer Configuration
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/');
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + path.extname(file.originalname));
+    }
+});
+
+const upload = multer({ storage: storage });  
 
 //1 - Adding New Task
-taskRoute.post("/addTask",async(req,res)=>{ 
+taskRoute.post("/addTask",upload.single("taskFile"),async(req,res)=>{            
     try{   
         const {taskName}=req.body;  
+        const {taskFile}=req.file ? req.file.filename : null;     
         //Check to prevent same task
         const exitTask=await Task.findOne({taskName}); 
         if(exitTask){   
@@ -13,7 +28,8 @@ taskRoute.post("/addTask",async(req,res)=>{
         }
          // Create a new Task instance
          const task=new Task({
-            taskName
+            taskName,
+            taskFile
          }); 
         // Save the Task instance in the DB 
         const taskData=await task.save();     
