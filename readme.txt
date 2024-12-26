@@ -8,12 +8,12 @@
 1)Insert 
 2)List
 3)Update
-4)Delete  - till done 
-5)Searching
+4)Delete  
+5)Searching  
 6)Pagination
-7)Image Upload
+7)Image Upload  
 8)Mail sent 
-9)Validation Proper && ASC/DESC && Timestamp && .ENV 
+9)Validation Proper && ASC/DESC && Timestamp && .ENV   
 10)Deployment 
 ---------------------------------------------------  
 11)Next Pick Notepage Imp Topics for Study ----        
