@@ -16,4 +16,6 @@
 9)Validation Proper && ASC/DESC && Timestamp && .ENV   
 10)Deployment 
 ---------------------------------------------------  
-11)Next Pick Notepage Imp Topics for Study ----        
+11)Next Pick Notepage Imp Topics for Study -->           
+
+  
